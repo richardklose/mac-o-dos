@@ -25,6 +25,7 @@ Options:
   -a, --app            (Required) Path to the directory with the files of the DOS applications.
   -d, --dosbox-version (Optional) Version of Dosbox-X that should be used. (0.83.10 and later)
   --arm                (Optional) Use the ARM version of Dosbox-X for Apple Silicon Macs.
+  -i, --icon           (Optional) Add an icon to your macOS app.
 ```
 
 mac-o-dos will perform the following operations automatically:
@@ -34,6 +35,7 @@ mac-o-dos will perform the following operations automatically:
 * Install Dosbox-X Config File into the .app
 * Install DOS application into the .app
 * Install Dosbox-X for either Apple Silicon Macs or Intel Macs into the .app
+* Optionally add an Info.plist and an icon to the .app
 
 ## Installation
 
@@ -49,8 +51,6 @@ git clone https://github.com/richardklose/mac-o-dos.git
 cd mac-o-dos
 ```
 
-## Remaining TODOs
-* Add a plist file, so we can have nice icons.
 
 ## 👤 Author
 

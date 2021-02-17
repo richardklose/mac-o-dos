@@ -16,6 +16,7 @@ print_usage() {
 	echo "    -a, --app                 (Required)     Path to the directory with the files of the DOS applications."
 	echo "    -d, --dosbox-version      (Optional)     Version of Dosbox-X that should be used inside the final app. (Does not work with versions prior 0.83.10)"
 	echo "    --arm                     (Optional)     Use the ARM version of Dosbox-X for Apple Silicon Macs."
+	echo "    -i, --icon                (Optional)     Add an icon to your macOS app."
 	echo ""
 }
 
@@ -42,6 +43,10 @@ case $i in
 		;;
 	-d=*|--dosbox-x-version=*)
 		DOSBOX_VERSION="${i#*=}"
+		shift
+		;;
+	-i=*|--icon=*)
+		ICON="${i#*=}"
 		shift
 		;;
 	*)
@@ -94,6 +99,12 @@ else
 	cp -r "assets/tmp/Intel-based Mac (x86_64)/dosbox-x-sdl2/dosbox-x.app" "${RES}"
 fi
 rm -r "assets/tmp"
+if [ $ICON ]; then
+	echo ""
+	echo " STEP 7: Install Info.plist and icon"
+	cp "${ICON}" "${RES}/icon.icns"
+	cp "${PWD}/assets/Info.plist" "${PWD}/out/${APPNAME}.app/Contents/"
+fi
 echo ""
 echo " ✨ Congratulations! Here is your DOS application wrapped for macOS:"
 echo " ${PWD}/out/$APPNAME.app";
